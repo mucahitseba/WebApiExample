@@ -12,6 +12,17 @@ namespace WebApi.API.Controllers
     public class LanguagesController : ApiController
     {
         LanguagesDAL languagesDAL=new LanguagesDAL();
+        
+        public IHttpActionResult GetSearchByName(string name)
+        {
+            return Ok("Name:"+name);
+        }
+        public IHttpActionResult GetSearchBySurname(string surname)
+        {
+            return Ok("Surname:" + surname);
+        }
+
+
         [ResponseType(typeof(IEnumerable<Languages>))]
         public IHttpActionResult Get()
         {
@@ -72,7 +83,7 @@ namespace WebApi.API.Controllers
             else
             {
                 languagesDAL.DeleteLanguage(id);
-                return Ok();
+                return StatusCode(HttpStatusCode.NoContent);
             }
         }
     }
