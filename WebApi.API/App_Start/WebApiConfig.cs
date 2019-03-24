@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
+using WebApi.API.Attributes;
+using WebApi.API.Security;
 
 namespace WebApi.API
 {
@@ -13,7 +15,8 @@ namespace WebApi.API
 
             // Web API routes
             config.MapHttpAttributeRoutes();
-
+            config.Filters.Add(new ApiExceptionAttribute());
+            config.MessageHandlers.Add(new APIKeyHandler());
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",
                 routeTemplate: "api/{controller}/{id}",

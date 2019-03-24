@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace WebApi.DAL
 {
-    public class LanguagesDAL
+    public class LanguagesDAL:BaseDAL
     {
-        ProgrammingDbEntities db=new ProgrammingDbEntities();
+        
 
         public IEnumerable<Languages> GetAlLanguageses()
         {

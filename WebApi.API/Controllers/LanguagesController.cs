@@ -5,17 +5,19 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
+using WebApi.API.Attributes;
 using WebApi.DAL;
 
 namespace WebApi.API.Controllers
 {
+    [Authorize]
     public class LanguagesController : ApiController
     {
         LanguagesDAL languagesDAL=new LanguagesDAL();
         
         public IHttpActionResult GetSearchByName(string name)
         {
-            return Ok("Name:"+name);
+            return Ok("Name:"+User.Identity.Name);
         }
         public IHttpActionResult GetSearchBySurname(string surname)
         {
@@ -24,6 +26,7 @@ namespace WebApi.API.Controllers
 
 
         [ResponseType(typeof(IEnumerable<Languages>))]
+        
         public IHttpActionResult Get()
         {
             var language = languagesDAL.GetAlLanguageses();
@@ -31,15 +34,16 @@ namespace WebApi.API.Controllers
             //Request.CreateResponse(HttpStatusCode.OK, language);
         }
         [ResponseType(typeof(Languages))]
+        
         public IHttpActionResult Get(int id)
         {
-            var language= languagesDAL.GetLanguageById(id);
-            if (language == null)
-            {
-                return NotFound();
-            }
+                var language = languagesDAL.GetLanguageById(id);
+                if (language == null)
+                {
+                    return NotFound();
+                }
 
-            return Ok(language);
+                return Ok(language);
         }
         [ResponseType(typeof(Languages))]
         public IHttpActionResult Post(Languages language)

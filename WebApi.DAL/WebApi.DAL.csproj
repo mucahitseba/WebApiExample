@@ -50,6 +50,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BaseDAL.cs" />
     <Compile Include="Languages.cs">
       <DependentUpon>WebApiModel.tt</DependentUpon>
     </Compile>
@@ -58,6 +59,7 @@
     <Compile Include="Users.cs">
       <DependentUpon>WebApiModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="UsersDAL.cs" />
     <Compile Include="WebApiModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
