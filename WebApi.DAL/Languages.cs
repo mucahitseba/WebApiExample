@@ -7,6 +7,8 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+using System.ComponentModel.DataAnnotations;
+
 namespace WebApi.DAL
 {
     using System;
@@ -17,6 +19,8 @@ namespace WebApi.DAL
         public int ID { get; set; }
         public string Language { get; set; }
         public string Founder { get; set; }
+        [Required(ErrorMessage = "zorunlu")]
+        [Range(1950,2020,ErrorMessage = "yýl 1950-2020 arasý olmalý")]
         public string Year { get; set; }
         public Nullable<bool> IsPopular { get; set; }
     }
